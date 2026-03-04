@@ -29,6 +29,9 @@ An Android application that automatically updates your lock screen wallpaper dai
 ## Release
 You can find the latest debug APK in the [release](./release) folder.
 
+## Credits
+Wallpapers provided by [The Life Calendar](https://thelifecalendar.com).
+
 ## How to Build
 1. Clone the repository.
 2. Open the project in Android Studio (Iguana or newer recommended).
