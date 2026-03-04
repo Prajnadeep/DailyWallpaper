@@ -12,6 +12,7 @@ An Android application that automatically updates your lock screen wallpaper dai
 ## Screenshots
 <p align="center">
   <img src="screenshots/mockup.png" width="300" title="Daily Wallpaper Mockup">
+  <img src="screenshots/mockup_2.png" width="300" title="Daily Wallpaper Mockup">
 </p>
 
 ## Tech Stack
