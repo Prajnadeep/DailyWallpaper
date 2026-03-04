@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Daily Wallpaper</string>
+    <string name="subtitle">Day in Year Progress Wallpaper</string>
+
+    <string name="toggle_label">Daily Updates</string>
+    <string name="toggle_desc">Enable automatic wallpaper update at 7:00 AM</string>
+
+    <string name="btn_apply_now">Apply Now</string>
+    <string name="btn_applying">Applying…</string>
+
+    <string name="apply_success">✓ Lock screen wallpaper applied</string>
+    <string name="apply_error">Error: %s</string>
+
+    <string name="status_header">Status</string>
+    <string name="status_label_state">Feature</string>
+    <string name="status_label_last_run">Last Run</string>
+    <string name="status_label_result">Result</string>
+
+    <string name="status_enabled">Enabled</string>
+    <string name="status_disabled">Disabled</string>
+
+    <string name="last_run_prefix">%s</string>
+    <string name="last_run_never">Never</string>
+    <string name="last_result_success">Success</string>
+    <string name="last_result_failure">Failed</string>
+    <string name="last_result_none">—</string>
+
+    <string name="schedule_note">Scheduled daily at 7:00 AM · Persists across reboots</string>
+</resources>
