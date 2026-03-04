@@ -25,6 +25,8 @@ class WallpaperRepository @Inject constructor(
     companion object {
         private const val TAG = "WallpaperRepository"
         private const val BASE_URL = "https://lifecal-virid.vercel.app/days"
+        private const val DEFAULT_WIDTH = 1080
+        private const val DEFAULT_HEIGHT = 1920
     }
 
     /**
@@ -58,16 +60,23 @@ class WallpaperRepository @Inject constructor(
     }
 
     private fun getScreenDimensions(): Pair<Int, Int> {
-        val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            val windowMetrics = wm.currentWindowMetrics
-            val bounds = windowMetrics.bounds
-            Pair(bounds.width(), bounds.height())
-        } else {
-            val displayMetrics = DisplayMetrics()
-            @Suppress("DEPRECATION")
-            wm.defaultDisplay.getRealMetrics(displayMetrics)
-            Pair(displayMetrics.widthPixels, displayMetrics.heightPixels)
+        return try {
+            val wm = context.getSystemService(Context.WINDOW_SERVICE) as? WindowManager
+                ?: return Pair(DEFAULT_WIDTH, DEFAULT_HEIGHT)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                val windowMetrics = wm.currentWindowMetrics
+                val bounds = windowMetrics.bounds
+                Pair(bounds.width(), bounds.height())
+            } else {
+                val displayMetrics = DisplayMetrics()
+                @Suppress("DEPRECATION")
+                wm.defaultDisplay.getRealMetrics(displayMetrics)
+                Pair(displayMetrics.widthPixels, displayMetrics.heightPixels)
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to get screen dimensions, using defaults: ${e.message}")
+            Pair(DEFAULT_WIDTH, DEFAULT_HEIGHT)
         }
     }
 
