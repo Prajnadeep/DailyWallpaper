@@ -10,7 +10,9 @@ An Android application that automatically updates your lock screen wallpaper dai
 - **Robust Architecture**: Follows Clean Architecture principles using Hilt for Dependency Injection and MVVM.
 
 ## Screenshots
-*(Add screenshots here)*
+<p align="center">
+  <img src="screenshots/mockup.png" width="300" title="Daily Wallpaper Mockup">
+</p>
 
 ## Tech Stack
 - **Kotlin**: Primary programming language.
@@ -20,6 +22,12 @@ An Android application that automatically updates your lock screen wallpaper dai
 - **ViewBinding**: For safe UI interaction.
 - **Coroutines & Flow**: For asynchronous programming and reactive UI updates.
 - **DataStore**: For lightweight data persistence.
+
+## Download
+[Latest APK ](https://github.com/Prajnadeep/DailyWallpaper/raw/main/release/app-debug.apk)
+
+## Release
+You can find the latest debug APK in the [release](./release) folder.
 
 ## How to Build
 1. Clone the repository.
