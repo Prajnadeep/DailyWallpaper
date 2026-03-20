@@ -10,6 +10,7 @@ import com.dailywallpaper.data.model.WallpaperResult
 import com.dailywallpaper.data.repository.WallpaperRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.flow.first
 
 /**
  * Hilt-injected CoroutineWorker.
@@ -38,7 +39,7 @@ class WallpaperWorker @AssistedInject constructor(
 
         // Honour the user's enable/disable toggle
         val isEnabled = try {
-            readEnabled()
+            preferences.wallpaperStatusFlow.first().isEnabled
         } catch (e: Exception) {
             Log.w(TAG, "Could not read preferences, defaulting to enabled", e)
             true
@@ -68,20 +69,5 @@ class WallpaperWorker @AssistedInject constructor(
                 }
             }
         }
-    }
-
-    /**
-     * DataStore reads are via Flow; we snapshot the current value synchronously-ish
-     * by collecting once. Using runBlocking here would deadlock; instead we rely on
-     * the suspend context we're already in.
-     */
-    private suspend fun readEnabled(): Boolean {
-        var enabled = true
-        // Fast path: collect one emission from the preferences flow
-        preferences.wallpaperStatusFlow.collect { status ->
-            enabled = status.isEnabled
-            return@collect
-        }
-        return enabled
     }
 }
